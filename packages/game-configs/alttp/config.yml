@@ -1,0 +1,97 @@
+name: "The Legend of Zelda: A Link to the Past"
+version: "1.0.0"
+game_id: "alttp"
+platform: emulator
+emulator: retroarch
+core: snes9x
+archipelago_compatible: true
+
+items:
+  # Progression
+  - id: 73000, name: "Moon Pearl",         classification: progression
+  - id: 73001, name: "Master Sword",       classification: progression
+  - id: 73002, name: "Tempered Sword",     classification: progression
+  - id: 73003, name: "Golden Sword",       classification: progression
+  - id: 73004, name: "Hookshot",           classification: progression
+  - id: 73005, name: "Flippers",           classification: progression
+  - id: 73006, name: "Power Glove",        classification: progression
+  - id: 73007, name: "Titan's Mitt",       classification: progression
+  - id: 73008, name: "Pegasus Boots",      classification: progression
+  - id: 73009, name: "Zora's Flippers",    classification: progression
+  - id: 73010, name: "Magic Mirror",       classification: progression
+  - id: 73011, name: "Lamp",               classification: progression
+  - id: 73012, name: "Book of Mudora",     classification: progression
+  - id: 73013, name: "Fire Rod",           classification: progression
+  - id: 73014, name: "Ice Rod",            classification: progression
+  - id: 73015, name: "Bombos Medallion",   classification: progression
+  - id: 73016, name: "Ether Medallion",    classification: progression
+  - id: 73017, name: "Quake Medallion",    classification: progression
+  # Useful
+  - id: 73030, name: "Bow",                classification: useful
+  - id: 73031, name: "Silver Arrows",      classification: useful
+  - id: 73032, name: "Blue Boomerang",     classification: useful
+  - id: 73033, name: "Red Boomerang",      classification: useful
+  - id: 73034, name: "Mushroom",           classification: useful
+  - id: 73035, name: "Magic Powder",       classification: useful
+  # Filler
+  - id: 73060, name: "Arrow (10)",         classification: filler
+  - id: 73061, name: "Bomb (3)",           classification: filler
+  - id: 73062, name: "Rupees (50)",        classification: filler
+  # Traps
+  - id: 73090, name: "Bee Trap",           classification: trap
+
+locations:
+  - id: 74000, name: "Link's House",                region: "Light World", rules: []
+  - id: 74001, name: "Hyrule Castle - Chest 1",     region: "Hyrule Castle", rules: []
+  - id: 74002, name: "Eastern Palace - Boss",        region: "Eastern Palace", rules: ["Bow"]
+  - id: 74003, name: "Desert Palace - Boss",         region: "Desert Palace", rules: ["Book of Mudora && Gloves"]
+  - id: 74004, name: "Tower of Hera - Boss",         region: "Tower of Hera", rules: ["Moon Pearl && Hookshot"]
+  - id: 74005, name: "Dark Palace - Boss",           region: "Dark World", rules: ["Moon Pearl && Hammer"]
+  - id: 74006, name: "Turtle Rock - Boss",           region: "Turtle Rock", rules: ["Moon Pearl && Hookshot && Titan's Mitt && Bombos Medallion"]
+
+regions:
+  - name: "Menu"
+    connects_to:
+      - region: "Light World"
+        rules: []
+  - name: "Light World"
+    connects_to:
+      - region: "Hyrule Castle"
+        rules: []
+      - region: "Eastern Palace"
+        rules: []
+      - region: "Desert Palace"
+        rules: ["Book of Mudora"]
+      - region: "Tower of Hera"
+        rules: ["Moon Pearl"]
+      - region: "Dark World"
+        rules: ["Moon Pearl && Power Glove"]
+  - name: "Dark World"
+    connects_to:
+      - region: "Turtle Rock"
+        rules: ["Titan's Mitt"]
+
+options:
+  goal:
+    type: choice
+    values: [ganon, pedestal, all_dungeons, triforce_hunt]
+    default: ganon
+  swords:
+    type: choice
+    values: [randomized, assured, vanilla, swordless]
+    default: randomized
+  open_pyramid:
+    type: toggle
+    default: false
+  death_link:
+    type: toggle
+    default: false
+  accessibility:
+    type: choice
+    values: [full, minimal, none]
+    default: full
+  progression_balancing:
+    type: range
+    min: 0
+    max: 99
+    default: 50

@@ -1,0 +1,101 @@
+name: "Hollow Knight"
+version: "1.0.0"
+game_id: "hollow-knight"
+platform: steam
+steam_app_id: 367520
+archipelago_compatible: true
+
+items:
+  # Progression
+  - id: 67000, name: "Mantis Claw",       classification: progression
+  - id: 67001, name: "Mothwing Cloak",    classification: progression
+  - id: 67002, name: "Monarch Wings",     classification: progression
+  - id: 67003, name: "Crystal Heart",     classification: progression
+  - id: 67004, name: "Isma's Tear",       classification: progression
+  - id: 67005, name: "Desolate Dive",     classification: progression
+  - id: 67006, name: "Vengeful Spirit",   classification: progression
+  - id: 67007, name: "Howling Wraiths",   classification: progression
+  - id: 67008, name: "Dream Nail",        classification: progression
+  - id: 67009, name: "Shade Cloak",       classification: progression
+  # Useful
+  - id: 67020, name: "Pale Ore",          classification: useful
+  - id: 67021, name: "Vessel Fragment",   classification: useful
+  - id: 67022, name: "Mask Shard",        classification: useful
+  - id: 67023, name: "Charm Notch",       classification: useful
+  # Filler
+  - id: 67050, name: "Geo Drop (Small)",  classification: filler
+  - id: 67051, name: "Geo Drop (Medium)", classification: filler
+  - id: 67052, name: "Geo Drop (Large)",  classification: filler
+  # Traps
+  - id: 67090, name: "Grub Trap",         classification: trap
+  - id: 67091, name: "Zote Trap",         classification: trap
+
+locations:
+  - id: 68000, name: "King's Pass - Tutorial Chest",      region: "King's Pass",         rules: []
+  - id: 68001, name: "Forgotten Crossroads - Grubfather", region: "Forgotten Crossroads", rules: []
+  - id: 68002, name: "Greenpath - Hornet",                region: "Greenpath",            rules: ["Mothwing Cloak || Mantis Claw"]
+  - id: 68003, name: "Fungal Wastes - Mantis Village",    region: "Fungal Wastes",        rules: ["Mothwing Cloak"]
+  - id: 68004, name: "City of Tears - Lemm",              region: "City of Tears",        rules: ["Desolate Dive || Crystal Heart"]
+  - id: 68005, name: "Resting Grounds - Seer",            region: "Resting Grounds",      rules: ["Dream Nail"]
+  - id: 68006, name: "Kingdom's Edge - Bardoon",          region: "Kingdom's Edge",       rules: ["Monarch Wings || Crystal Heart"]
+  - id: 68007, name: "Abyss - Shade Cloak Pickup",        region: "Abyss",                rules: ["Crystal Heart && Isma's Tear"]
+
+regions:
+  - name: "Menu"
+    connects_to:
+      - region: "King's Pass"
+        rules: []
+
+  - name: "King's Pass"
+    connects_to:
+      - region: "Forgotten Crossroads"
+        rules: []
+
+  - name: "Forgotten Crossroads"
+    connects_to:
+      - region: "Greenpath"
+        rules: ["Mothwing Cloak || Mantis Claw"]
+      - region: "Fungal Wastes"
+        rules: ["Mothwing Cloak"]
+
+  - name: "Greenpath"
+    connects_to:
+      - region: "Fungal Wastes"
+        rules: []
+
+  - name: "Fungal Wastes"
+    connects_to:
+      - region: "City of Tears"
+        rules: []
+
+  - name: "City of Tears"
+    connects_to:
+      - region: "Resting Grounds"
+        rules: []
+      - region: "Kingdom's Edge"
+        rules: ["Monarch Wings"]
+      - region: "Abyss"
+        rules: ["Crystal Heart"]
+
+options:
+  randomize_charms:
+    type: toggle
+    default: true
+  randomize_skills:
+    type: toggle
+    default: true
+  randomize_pale_ore:
+    type: toggle
+    default: true
+  death_link:
+    type: toggle
+    default: false
+  accessibility:
+    type: choice
+    values: [full, minimal, none]
+    default: full
+  progression_balancing:
+    type: range
+    min: 0
+    max: 99
+    default: 50

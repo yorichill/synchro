@@ -1,0 +1,86 @@
+name: "Elden Ring"
+version: "1.0.0"
+game_id: "elden-ring"
+platform: steam
+steam_app_id: 1245620
+archipelago_compatible: true
+notes: "Requires offline mode — Easy Anti-Cheat incompatible with memory reading"
+
+items:
+  # Progression (Sites of Grace / Key Items)
+  - id: 71000, name: "Stonesword Key",        classification: progression
+  - id: 71001, name: "Dectus Medallion (Left)", classification: progression
+  - id: 71002, name: "Dectus Medallion (Right)", classification: progression
+  - id: 71003, name: "Rold Medallion",         classification: progression
+  - id: 71004, name: "Haligtree Secret Medallion (Left)", classification: progression
+  - id: 71005, name: "Haligtree Secret Medallion (Right)", classification: progression
+  # Useful
+  - id: 71020, name: "Flask of Crimson Tears", classification: useful
+  - id: 71021, name: "Flask of Cerulean Tears", classification: useful
+  - id: 71022, name: "Smithing Stone (1)",      classification: useful
+  - id: 71023, name: "Golden Seed",             classification: useful
+  - id: 71024, name: "Sacred Tear",             classification: useful
+  # Filler
+  - id: 71050, name: "Rune Arc",                classification: filler
+  - id: 71051, name: "Pickled Turtle Neck",     classification: filler
+  # Traps
+  - id: 71090, name: "Rune Loss Trap",          classification: trap
+  - id: 71091, name: "Rot Trap",                classification: trap
+
+locations:
+  - id: 72000, name: "Limgrave - Stranded Graveyard",    region: "Limgrave",       rules: []
+  - id: 72001, name: "Limgrave - Dragon-Burnt Ruins",    region: "Limgrave",       rules: []
+  - id: 72002, name: "Stormveil Castle - Grafted Scion", region: "Stormveil",      rules: ["Stonesword Key"]
+  - id: 72003, name: "Liurnia - Academy Gate Town",      region: "Liurnia",        rules: []
+  - id: 72004, name: "Altus Plateau - Sorcerer's Isle",  region: "Altus Plateau",  rules: ["Dectus Medallion (Left) && Dectus Medallion (Right)"]
+  - id: 72005, name: "Leyndell - Capital Entrance",      region: "Leyndell",       rules: []
+  - id: 72006, name: "Mountaintops - Grand Lift of Rold",region: "Mountaintops",   rules: ["Rold Medallion"]
+  - id: 72007, name: "Farum Azula - Entrance",           region: "Farum Azula",    rules: []
+
+regions:
+  - name: "Menu"
+    connects_to:
+      - region: "Limgrave"
+        rules: []
+  - name: "Limgrave"
+    connects_to:
+      - region: "Stormveil"
+        rules: []
+      - region: "Liurnia"
+        rules: []
+  - name: "Liurnia"
+    connects_to:
+      - region: "Altus Plateau"
+        rules: ["Dectus Medallion (Left) && Dectus Medallion (Right)"]
+  - name: "Altus Plateau"
+    connects_to:
+      - region: "Leyndell"
+        rules: []
+  - name: "Leyndell"
+    connects_to:
+      - region: "Mountaintops"
+        rules: ["Rold Medallion"]
+  - name: "Mountaintops"
+    connects_to:
+      - region: "Farum Azula"
+        rules: []
+
+options:
+  randomize_weapons:
+    type: toggle
+    default: false
+  randomize_key_items:
+    type: toggle
+    default: true
+  death_link:
+    type: toggle
+    default: false
+  accessibility:
+    type: choice
+    values: [full, minimal, none]
+    default: full
+  progression_balancing:
+    type: range
+    min: 0
+    max: 99
+    default: 50

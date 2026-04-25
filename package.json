@@ -1,0 +1,19 @@
+{
+  "name": "synchro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter desktop tauri dev",
+    "build": "pnpm --filter desktop tauri build",
+    "overlay:dev": "pnpm --filter overlay dev",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

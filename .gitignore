@@ -1,0 +1,30 @@
+# Rust
+target/
+Cargo.lock
+
+# Node
+node_modules/
+dist/
+.pnpm-store/
+
+# Tauri
+apps/desktop/src-tauri/target/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Logs
+*.log
+logs/
+
+# Sessions (données locales)
+sessions/

@@ -1,0 +1,11 @@
+[package]
+name = "patcher-core"
+version = "0.1.0"
+edition = "2021"
+description = "ROM/file hash verification (SHA256) and binary patch application (.bps, .ips)"
+
+[dependencies]
+sha2 = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }

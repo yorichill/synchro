@@ -1,0 +1,98 @@
+name: "Dragon Age: Origins"
+version: "1.0.0"
+game_id: "dragon-age-origins"
+platform: native
+archipelago_compatible: false
+notes: "Synchro exclusive — integration via save file reading + memory injection"
+
+items:
+  # Progression (Party Members = keys to content)
+  - id: 77000, name: "Alistair",              classification: progression
+  - id: 77001, name: "Morrigan",              classification: progression
+  - id: 77002, name: "Leliana",               classification: progression
+  - id: 77003, name: "Sten",                  classification: progression
+  - id: 77004, name: "Wynne",                 classification: progression
+  - id: 77005, name: "Zevran",                classification: progression
+  - id: 77006, name: "Oghren",                classification: progression
+  - id: 77007, name: "Dog",                   classification: progression
+  # Key Items
+  - id: 77010, name: "Treaties",              classification: progression
+  - id: 77011, name: "Urn of Sacred Ashes",   classification: progression
+  - id: 77012, name: "Anvil of the Void",     classification: progression
+  - id: 77013, name: "Armor of the Legion",   classification: useful
+  # Useful
+  - id: 77030, name: "Tome of Physical Technique", classification: useful
+  - id: 77031, name: "Tome of Arcane Technique",   classification: useful
+  - id: 77032, name: "Antivan Leather Boots",       classification: useful
+  - id: 77033, name: "Warden's Oath",               classification: useful
+  # Filler
+  - id: 77060, name: "Gold (50)",             classification: filler
+  - id: 77061, name: "Injury Kit",            classification: filler
+  - id: 77062, name: "Health Poultice",       classification: filler
+  # Traps
+  - id: 77090, name: "Cursed Item",           classification: trap
+  - id: 77091, name: "Darkspawn Corruption",  classification: trap
+
+locations:
+  - id: 78000, name: "Ostagar - Duncan's Chest",        region: "Ostagar",       rules: []
+  - id: 78001, name: "Lothering - Village Cache",       region: "Lothering",     rules: []
+  - id: 78002, name: "Circle Tower - Senior Mage Cache",region: "Circle Tower",  rules: []
+  - id: 78003, name: "Orzammar - Harrowmont Reward",    region: "Orzammar",      rules: ["Treaties"]
+  - id: 78004, name: "Brecilian Forest - Elven Cache",  region: "Brecilian",     rules: []
+  - id: 78005, name: "Redcliffe Castle - Knight-Commander Reward", region: "Redcliffe", rules: []
+  - id: 78006, name: "Haven - Urn Chamber",             region: "Haven",         rules: []
+  - id: 78007, name: "Denerim - Palace District Cache", region: "Denerim",       rules: ["Urn of Sacred Ashes && Anvil of the Void"]
+
+regions:
+  - name: "Menu"
+    connects_to:
+      - region: "Ostagar"
+        rules: []
+  - name: "Ostagar"
+    connects_to:
+      - region: "Lothering"
+        rules: []
+  - name: "Lothering"
+    connects_to:
+      - region: "Circle Tower"
+        rules: []
+      - region: "Orzammar"
+        rules: []
+      - region: "Brecilian"
+        rules: []
+      - region: "Redcliffe"
+        rules: []
+      - region: "Haven"
+        rules: []
+  - name: "Circle Tower"
+    connects_to:
+      - region: "Denerim"
+        rules: []
+  - name: "Orzammar"
+    connects_to:
+      - region: "Denerim"
+        rules: []
+
+options:
+  randomize_companions:
+    type: toggle
+    default: true
+  randomize_key_items:
+    type: toggle
+    default: true
+  origin_story:
+    type: choice
+    values: [random, human_noble, dalish_elf, city_elf, dwarf_commoner, dwarf_noble, magi]
+    default: random
+  death_link:
+    type: toggle
+    default: false
+  accessibility:
+    type: choice
+    values: [full, minimal, none]
+    default: full
+  progression_balancing:
+    type: range
+    min: 0
+    max: 99
+    default: 50

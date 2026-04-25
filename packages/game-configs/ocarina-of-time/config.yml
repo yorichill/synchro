@@ -1,0 +1,114 @@
+name: "The Legend of Zelda: Ocarina of Time"
+version: "1.0.0"
+game_id: "ocarina-of-time"
+platform: emulator
+emulator: retroarch
+core: mupen64plus-next
+archipelago_compatible: true
+
+items:
+  # Progression
+  - id: 75000, name: "Kokiri's Sword",      classification: progression
+  - id: 75001, name: "Master Sword",        classification: progression
+  - id: 75002, name: "Biggoron's Sword",    classification: progression
+  - id: 75003, name: "Deku Shield",         classification: progression
+  - id: 75004, name: "Hylian Shield",       classification: progression
+  - id: 75005, name: "Mirror Shield",       classification: progression
+  - id: 75006, name: "Fairy Slingshot",     classification: progression
+  - id: 75007, name: "Fairy Bow",           classification: progression
+  - id: 75008, name: "Hookshot",            classification: progression
+  - id: 75009, name: "Longshot",            classification: progression
+  - id: 75010, name: "Iron Boots",          classification: progression
+  - id: 75011, name: "Hover Boots",         classification: progression
+  - id: 75012, name: "Silver Gauntlets",    classification: progression
+  - id: 75013, name: "Golden Gauntlets",    classification: progression
+  - id: 75014, name: "Kokiri's Emerald",    classification: progression
+  - id: 75015, name: "Goron's Ruby",        classification: progression
+  - id: 75016, name: "Zora's Sapphire",     classification: progression
+  - id: 75017, name: "Forest Medallion",    classification: progression
+  - id: 75018, name: "Fire Medallion",      classification: progression
+  - id: 75019, name: "Water Medallion",     classification: progression
+  - id: 75020, name: "Shadow Medallion",    classification: progression
+  - id: 75021, name: "Spirit Medallion",    classification: progression
+  - id: 75022, name: "Light Medallion",     classification: progression
+  # Useful
+  - id: 75040, name: "Bomb Bag",            classification: useful
+  - id: 75041, name: "Quiver",              classification: useful
+  - id: 75042, name: "Wallet",              classification: useful
+  # Filler
+  - id: 75060, name: "Bombs (5)",           classification: filler
+  - id: 75061, name: "Arrows (10)",         classification: filler
+  - id: 75062, name: "Rupees (50)",         classification: filler
+  # Traps
+  - id: 75090, name: "Bomb Trap",           classification: trap
+  - id: 75091, name: "Ice Trap",            classification: trap
+
+locations:
+  - id: 76000, name: "Kokiri Forest - Starting Chest",  region: "Kokiri Forest",  rules: []
+  - id: 76001, name: "Deku Tree - Compass Chest",       region: "Deku Tree",      rules: ["Kokiri's Sword && Deku Shield"]
+  - id: 76002, name: "Dodongo's Cavern - Boss",         region: "Dodongo's Cavern", rules: ["Bomb Bag"]
+  - id: 76003, name: "Jabu Jabu - Boss",                region: "Jabu Jabu",      rules: ["Fairy Slingshot"]
+  - id: 76004, name: "Forest Temple - Boss",            region: "Forest Temple",  rules: ["Adult && Hookshot"]
+  - id: 76005, name: "Fire Temple - Boss",              region: "Fire Temple",    rules: ["Adult && Silver Gauntlets"]
+  - id: 76006, name: "Water Temple - Boss",             region: "Water Temple",   rules: ["Adult && Iron Boots && Hookshot"]
+  - id: 76007, name: "Shadow Temple - Boss",            region: "Shadow Temple",  rules: ["Adult && Hookshot && Hover Boots"]
+  - id: 76008, name: "Spirit Temple - Boss",            region: "Spirit Temple",  rules: ["Mirror Shield"]
+
+regions:
+  - name: "Menu"
+    connects_to:
+      - region: "Kokiri Forest"
+        rules: []
+  - name: "Kokiri Forest"
+    connects_to:
+      - region: "Deku Tree"
+        rules: ["Kokiri's Sword && Deku Shield"]
+      - region: "Hyrule Field"
+        rules: []
+  - name: "Hyrule Field"
+    connects_to:
+      - region: "Dodongo's Cavern"
+        rules: ["Bomb Bag"]
+      - region: "Jabu Jabu"
+        rules: []
+      - region: "Adult"
+        rules: ["Kokiri's Emerald && Goron's Ruby && Zora's Sapphire"]
+  - name: "Adult"
+    connects_to:
+      - region: "Forest Temple"
+        rules: ["Hookshot"]
+      - region: "Fire Temple"
+        rules: ["Silver Gauntlets"]
+      - region: "Water Temple"
+        rules: ["Iron Boots && Hookshot"]
+      - region: "Shadow Temple"
+        rules: ["Hookshot && Hover Boots"]
+      - region: "Spirit Temple"
+        rules: ["Mirror Shield"]
+
+options:
+  open_forest:
+    type: toggle
+    default: false
+  open_kakariko:
+    type: toggle
+    default: false
+  open_door_of_time:
+    type: toggle
+    default: false
+  shuffle_songs:
+    type: choice
+    values: [song, anywhere, dungeon]
+    default: song
+  death_link:
+    type: toggle
+    default: false
+  accessibility:
+    type: choice
+    values: [full, minimal, none]
+    default: full
+  progression_balancing:
+    type: range
+    min: 0
+    max: 99
+    default: 50

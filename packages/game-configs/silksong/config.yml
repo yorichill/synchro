@@ -1,0 +1,46 @@
+name: "Hollow Knight: Silksong"
+version: "1.0.0"
+game_id: "silksong"
+platform: steam
+steam_app_id: 1030300
+archipelago_compatible: true
+
+# NOTE: config à affiner après analyse complète du jeu
+# Structure basée sur les mécaniques connues de Silksong
+
+items:
+  # Progression (Hornet tools)
+  - id: 69000, name: "Ascendant's Mark",   classification: progression
+  - id: 69001, name: "Silk Spear",          classification: progression
+  - id: 69002, name: "Lace",                classification: progression
+  - id: 69003, name: "Dash Slash",          classification: progression
+  # Useful
+  - id: 69020, name: "Needle",              classification: useful
+  - id: 69021, name: "Bell Fragment",       classification: useful
+  # Filler
+  - id: 69050, name: "Silk Drop",           classification: filler
+  # Traps
+  - id: 69090, name: "Binding Trap",        classification: trap
+
+locations:
+  - id: 70000, name: "Pharloom - Opening Chest", region: "Pharloom Entry", rules: []
+
+regions:
+  - name: "Menu"
+    connects_to:
+      - region: "Pharloom Entry"
+        rules: []
+
+options:
+  death_link:
+    type: toggle
+    default: false
+  accessibility:
+    type: choice
+    values: [full, minimal, none]
+    default: full
+  progression_balancing:
+    type: range
+    min: 0
+    max: 99
+    default: 50
