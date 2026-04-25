@@ -28,3 +28,13 @@ logs/
 
 # Sessions (données locales)
 sessions/
+
+# Local artifacts
+.claude/
+scripts/build-extracted/
+scripts/build-extracted-v2/
+apps/desktop/src-tauri/gen/
+*.tsbuildinfo
+
+# Design source bundle (référence locale, 1.6 MB)
+Synchro Build.html
