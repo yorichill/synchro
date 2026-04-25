@@ -1,0 +1,146 @@
+version: 1
+items:
+  - id: "mothwing_cloak"
+    name: "Manteau Papillon"
+    category: "skill"
+    progression: true
+    count: 1
+
+  - id: "mantis_claw"
+    name: "Griffe de Mante"
+    category: "skill"
+    progression: true
+    count: 1
+
+  - id: "crystal_heart"
+    name: "Cœur de Cristal"
+    category: "skill"
+    progression: true
+    count: 1
+
+  - id: "monarch_wings"
+    name: "Ailes de Monarque"
+    category: "skill"
+    progression: true
+    count: 1
+
+  - id: "ismas_tear"
+    name: "Larme d'Isma"
+    category: "skill"
+    progression: true
+    count: 1
+
+  - id: "vengeful_spirit"
+    name: "Esprit Vengeur"
+    category: "spell"
+    progression: true
+    count: 1
+
+  - id: "desolate_dive"
+    name: "Plongeon Désolant"
+    category: "spell"
+    progression: true
+    count: 1
+
+  - id: "howling_wraiths"
+    name: "Spectres Hurleurs"
+    category: "spell"
+    progression: true
+    count: 1
+
+  - id: "simple_key"
+    name: "Clé Simple"
+    category: "key"
+    progression: true
+    count: 4
+
+  - id: "shopkeepers_key"
+    name: "Clé du Marchand"
+    category: "key"
+    progression: true
+    count: 1
+
+  - id: "elegant_key"
+    name: "Clé Élégante"
+    category: "key"
+    progression: true
+    count: 1
+
+  - id: "tram_pass"
+    name: "Laissez-passer du Tram"
+    category: "key"
+    progression: true
+    count: 1
+
+  - id: "lumafly_lantern"
+    name: "Lanterne de Lumouches"
+    category: "item"
+    progression: true
+    count: 1
+
+  - id: "pale_ore"
+    name: "Minerai Pâle"
+    category: "item"
+    progression: true
+    count: 6
+
+  - id: "mask_shard"
+    name: "Éclat de Masque"
+    category: "upgrade"
+    progression: false
+    count: 16
+
+  - id: "vessel_fragment"
+    name: "Fragment de Réceptacle"
+    category: "upgrade"
+    progression: false
+    count: 9
+
+  - id: "charm_notch"
+    name: "Encoche de Charme"
+    category: "upgrade"
+    progression: false
+    count: 8
+
+  - id: "geo_rock_small"
+    name: "Petit Tas de Géo"
+    category: "geo"
+    progression: false
+    count: 150
+
+  - id: "geo_rock_large"
+    name: "Grand Tas de Géo"
+    category: "geo"
+    progression: false
+    count: 50
+
+  - id: "rancid_egg"
+    name: "Œuf Rance"
+    category: "item"
+    progression: false
+    count: 21
+
+  - id: "wanderers_journal"
+    name: "Journal d'un Voyageur"
+    category: "relic"
+    progression: false
+    count: 14
+
+  - id: "hallownest_seal"
+    name: "Sceau d'Hallownest"
+    category: "relic"
+    progression: false
+    count: 17
+
+  - id: "kings_idol"
+    name: "Idole du Roi"
+    category: "relic"
+    progression: false
+    count: 8
+
+  - id: "arcane_egg"
+    name: "Œuf Arcane"
+    category: "relic"
+    progression: false
+    count: 4
+

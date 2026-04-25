@@ -1,0 +1,98 @@
+version: 1
+checks:
+  - id: "hk_crossroads_map"
+    name: "Forgotten Crossroads - Carte - Carrefour Oublié"
+    region: "forgotten_crossroads"
+    requires: []
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_crossroads_stag"
+    name: "Forgotten Crossroads - Station - Carrefour Oublié"
+    region: "forgotten_crossroads"
+    requires: "geo"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_false_knight_chest"
+    name: "Forgotten Crossroads - Coffre du Faux Chevalier"
+    region: "forgotten_crossroads"
+    requires: []
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_sly_key"
+    name: "Forgotten Crossroads - Sauvetage de Sly"
+    region: "forgotten_crossroads"
+    requires: []
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_gruz_mother"
+    name: "Forgotten Crossroads - Mère Gruz"
+    region: "forgotten_crossroads"
+    requires: []
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_salubra"
+    name: "Forgotten Crossroads - Boutique de Salubra"
+    region: "forgotten_crossroads"
+    requires: "mothwing_cloak and mantis_claw"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_mothwing_cloak"
+    name: "Greenpath - Hornet 1"
+    region: "greenpath"
+    requires: "vengeful_spirit"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_greenpath_map"
+    name: "Greenpath - Carte - Voie Verdoyante"
+    region: "greenpath"
+    requires: []
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_hunter_journal"
+    name: "Greenpath - Journal du Chasseur"
+    region: "greenpath"
+    requires: "mothwing_cloak"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_no_eyes"
+    name: "Greenpath - Sans-Yeux"
+    region: "greenpath"
+    requires: "lumafly_lantern"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_mantis_claw"
+    name: "Fungal Wastes - Village des Mantes"
+    region: "fungal_wastes"
+    requires: "mothwing_cloak"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_mantis_lords"
+    name: "Fungal Wastes - Seigneurs Mantes"
+    region: "fungal_wastes"
+    requires: "mantis_claw"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_city_crest"
+    name: "City of Tears - Cimier de la Cité"
+    region: "city_of_tears"
+    requires: "mothwing_cloak and mantis_claw"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_soul_master"
+    name: "City of Tears - Maître de l'Âme"
+    region: "city_of_tears"
+    requires: "mantis_claw"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_crystal_guardian"
+    name: "Crystal Peak - Gardien de Cristal"
+    region: "crystal_peak"
+    requires: "lumafly_lantern and desolate_dive"
+    vanilla_item: "geo_rock_small"
+
+  - id: "hk_crystal_heart"
+    name: "Crystal Peak - Cœur de Cristal"
+    region: "crystal_peak"
+    requires: "mantis_claw"
+    vanilla_item: "geo_rock_small"
+
