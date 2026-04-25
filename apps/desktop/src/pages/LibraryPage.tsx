@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { useNavigate } from "react-router-dom";
+import { Btn, Card, EmptyState, GameCover, Row, Shell } from "../ui/primitives";
 
 interface DetectedGame {
   game_id: string;
@@ -14,57 +15,53 @@ export default function LibraryPage() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const detect = () => {
+    setLoading(true);
     invoke<DetectedGame[]>("detect_games")
       .then(setGames)
+      .catch(() => setGames([]))
       .finally(() => setLoading(false));
-  }, []);
+  };
+
+  useEffect(detect, []);
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Bibliothèque</h1>
-        <button
-          onClick={() => navigate("/session/new")}
-          className="px-4 py-2 rounded text-sm font-medium transition-colors"
-          style={{ background: "var(--color-accent)", color: "white" }}
-        >
-          + Créer une session
-        </button>
-      </div>
-
-      {loading && (
-        <p style={{ color: "var(--color-text-muted)" }}>Détection des jeux…</p>
-      )}
-
-      {!loading && games.length === 0 && (
-        <div
-          className="rounded-lg p-8 text-center"
-          style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}
-        >
-          <p style={{ color: "var(--color-text-muted)" }}>
-            Aucun jeu compatible détecté.
-          </p>
-          <p className="text-sm mt-2" style={{ color: "var(--color-text-muted)" }}>
-            Assurez-vous que Steam ou vos émulateurs sont installés.
-          </p>
+    <Shell
+      title="Bibliothèque"
+      subtitle={loading ? "Détection en cours…" : games.length === 0 ? "Aucun jeu détecté pour le moment" : `${games.length} jeu(x) détecté(s)`}
+      actions={
+        <>
+          <Btn variant="ghost" size="sm" icon="↻" onClick={detect}>Lancer la détection</Btn>
+          <Btn variant="primary" size="sm" onClick={() => navigate("/session/new")}>+ Nouvelle session</Btn>
+        </>
+      }
+    >
+      {!loading && games.length === 0 ? (
+        <EmptyState
+          title="Aucun jeu détecté"
+          message="Lance une détection pour scanner Steam, RetroArch et tes émulateurs. Tu peux aussi ajouter un jeu manuellement."
+          action={
+            <Row gap={8}>
+              <Btn variant="primary" size="sm" icon="↻" onClick={detect}>Détecter maintenant</Btn>
+              <Btn variant="ghost" size="sm">Ajouter manuellement</Btn>
+            </Row>
+          }
+        />
+      ) : (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 14 }}>
+          {games.map((g) => (
+            <Card key={g.game_id} padding={0} style={{ overflow: "hidden" }}>
+              <GameCover gameId={g.game_id} ratio="16/10" />
+              <div style={{ padding: 14 }}>
+                <div style={{ fontWeight: 600, fontSize: 14 }}>{g.name}</div>
+                <div style={{ fontSize: 11, color: "var(--color-text-muted)", marginTop: 4, fontFamily: "var(--font-mono)" }}>
+                  {g.launcher}
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
       )}
-
-      <div className="grid grid-cols-3 gap-4">
-        {games.map((g) => (
-          <div
-            key={g.game_id}
-            className="rounded-lg p-4"
-            style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)" }}
-          >
-            <div className="font-medium">{g.name}</div>
-            <div className="text-xs mt-1" style={{ color: "var(--color-text-muted)" }}>
-              {g.launcher}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    </Shell>
   );
 }
