@@ -15,7 +15,7 @@ serde_json = { workspace = true }
 tokio = { workspace = true }
 anyhow = { workspace = true }
 tracing = { workspace = true }
-tracing-subscriber = { workspace = true }
+tracing-subscriber = { workspace = true, features = ["env-filter"] }
 net-server = { path = "../../../packages/net-server" }
 engine-generator = { path = "../../../packages/engine-generator" }
 detector = { path = "../../../packages/detector" }

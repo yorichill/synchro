@@ -7,10 +7,24 @@ const SYNCHRO_STEAM_GAMES: &[(u64, &str, &str)] = &[
 ];
 
 pub fn detect() -> Vec<DetectedGame> {
-    // TODO: Sprint 2 — parse Steam libraryfolders.vdf
-    // 1. Read registry HKCU\Software\Valve\Steam → InstallPath
-    // 2. Parse steamapps/libraryfolders.vdf for all library paths
-    // 3. Check for appmanifest_{app_id}.acf in each library
-    // 4. Extract installdir from manifest
-    vec![]
+    let mut detected = Vec::new();
+    
+    let steam_dir = match steamlocate::SteamDir::locate() {
+        Ok(dir) => dir,
+        Err(_) => return detected,
+    };
+
+    for &(app_id, game_id, name) in SYNCHRO_STEAM_GAMES {
+        if let Ok(Some((app, library))) = steam_dir.find_app(app_id as u32) {
+            let install_path = library.resolve_app_dir(&app).display().to_string();
+            detected.push(DetectedGame {
+                game_id: game_id.to_string(),
+                name: name.to_string(),
+                install_path,
+                launcher: crate::LauncherType::Steam,
+            });
+        }
+    }
+
+    detected
 }
