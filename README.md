@@ -2,7 +2,7 @@
 
 > Multiworld Randomizer nouvelle génération — Plug & Play, rétrocompatible Archipelago.
 
-Synchro permet à N joueurs de jouer chacun sur **leur propre sauvegarde** de jeux différents ou identiques, avec les items mélangés entre tous les mondes. Trouver un item dans ton jeu peut débloquer quelqu'un d'autre.
+Synchro est un système de modification inter-jeux révolutionnaire qui fusionne vos titres préférés en une seule expérience multijoueur unifiée.
 
 ## Pourquoi Synchro ?
 
